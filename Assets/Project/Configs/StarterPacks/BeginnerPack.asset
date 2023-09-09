@@ -13,10 +13,16 @@ MonoBehaviour:
   m_Name: BeginnerPack
   m_EditorClassIdentifier: 
   Data:
-    _icon: {fileID: 21300000, guid: 87f7ff0afd834d14ba13a3a9e89f88a9, type: 3}
     _iconName: Beginner pack
     _hasDiscount: 1
     _header: Beginer pack
     _description: Beginer pack Beginer pack Beginer pack
     _price: 2.99
     _discountPercentage: 15
+    _items:
+    - name: WoodStack
+      _count: 40
+      _item:
+        Type: 0
+        Name: Wood
+        Description: Just a wood

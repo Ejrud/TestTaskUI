@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -12,12 +13,14 @@ public class ModelData
     public bool HasDiscount => _hasDiscount;
     public string Description => _description;
     public float DiscountPercentage => _discountPercentage;
-    
-    
+    public List<ItemStack> Items => _items;
+
+
     [SerializeField] protected string _iconName;
     [SerializeField] protected bool _hasDiscount;
     [SerializeField] protected string _header;
     [SerializeField] protected string _description;
     [SerializeField] protected float _price;
     [SerializeField] protected float _discountPercentage;
+    [SerializeField] protected List<ItemStack> _items;
 }

@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: StarterPack
   m_EditorClassIdentifier: 
   Data:
-    _icon: {fileID: 21300000, guid: 87f7ff0afd834d14ba13a3a9e89f88a9, type: 3}
     _iconName: Starter pack
     _hasDiscount: 0
-    _header: 
-    _description: 
-    _price: 0
+    _header: Starter pack
+    _description: Just a starter pack for game
+    _price: 4.99
     _discountPercentage: 0
