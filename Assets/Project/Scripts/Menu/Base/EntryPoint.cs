@@ -1,29 +1,57 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EntryPoint : MonoBehaviour
 {
-    [SerializeField] private List<PackConfig> _packConfigs;
+    [SerializeField] private List<PackConfig> _donateConfigs;
     
     [Header("UI")]
-    [SerializeField] private DonateView _donateView;
-    [SerializeField] private DonateDiscountView _donateDiscountView;
-    private Controller _controller;
+    [SerializeField] private ProductView _productView;
+    [SerializeField] private ProductDiscountView _productDiscountView;
+
+    [Header("Buttons")] 
+    [SerializeField] private Transform _productAreaParent;
+    [SerializeField] private GameObject _productWindowObj;
+    [SerializeField] private Button _purchaseButton;
+    [SerializeField] private Button _closeButton;
+
+    [Header("Controllers")]
+    [SerializeField] private ProductPurchaseController _productPurchaseController;
+    [SerializeField] private ProductAreaController _productAreaController;
     
     private void Start()
     {
-        List<Model> models = new List<Model>();
+        List<Model> productModels = new List<Model>();
         
-        foreach (var pack in _packConfigs)
+        foreach (var config in _donateConfigs)
         {
-            Model model = (pack.Data.HasDiscount) ? 
-                new DonateModel(_donateDiscountView, pack.Data) : 
-                new DonateModel(_donateView, pack.Data);
+            Model model = (config.Data.HasDiscount) ? 
+                new ProductModel(_productDiscountView, config.Data) : 
+                new ProductModel(_productView, config.Data);
             
-            models.Add(model);
+            productModels.Add(model);
         }
-        
-        _controller = new ButtonInputController(models);
-        _controller.Init();
+
+        InitProductAreaController(productModels);
+        InitPurchaseController(productModels);
+    }
+    
+    private void InitProductAreaController(List<Model> models)
+    {
+        _productAreaController.Init(_productWindowObj, _productAreaParent, _closeButton);
+        foreach (var model in models)
+        {
+            _productAreaController.AddModel(model);
+        }
+    }
+
+    private void InitPurchaseController(List<Model> models)
+    {
+        _productPurchaseController.Init(_purchaseButton);
+        foreach (var model in models)
+        {
+            _productPurchaseController.AddModel(model);
+        }
     }
 }

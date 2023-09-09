@@ -4,6 +4,8 @@ using UnityEngine;
 [Serializable]
 public abstract class Model
 {
+    public Action<Model> OnSelected;
+    public Action<Model> OnRejected;
     public ModelData Data => _data;
     
     [SerializeField] protected ModelData _data;
@@ -16,4 +18,5 @@ public abstract class Model
     }
 
     public abstract void OpenWindow();
+    public abstract void CloseWindow();
 }
