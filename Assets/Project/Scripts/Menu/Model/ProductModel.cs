@@ -12,15 +12,15 @@ public class ProductModel : Model
     public override void OpenWindow()
     {
         OnSelected?.Invoke(this);
-        _view.gameObject.SetActive(true);
         _view.UpdateView(this);
+        _view.SetActiveView(true);
     }
 
     public override void CloseWindow()
     {
         OnRejected?.Invoke(this);
-        _view.gameObject.SetActive(false);
         _view.ClearView();
+        _view.SetActiveView(false);
     }
 
     public void SetPurchaseButton(Button button)
