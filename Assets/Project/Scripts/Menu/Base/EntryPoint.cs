@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EntryPoint : MonoBehaviour
 {
@@ -10,14 +9,8 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private ProductView _productView;
     [SerializeField] private ProductDiscountView _productDiscountView;
 
-    [Header("Buttons")] 
-    [SerializeField] private Transform _productAreaParent;
-    [SerializeField] private GameObject _productWindowObj;
-    [SerializeField] private Button _purchaseButton;
-    [SerializeField] private Button _closeButton;
-
     [Header("Controllers")]
-    [SerializeField] private ProductPurchaseController _productPurchaseController;
+    [SerializeField] private PurchaseController _purchaseController;
     [SerializeField] private ProductAreaController _productAreaController;
     
     private void Start()
@@ -39,7 +32,7 @@ public class EntryPoint : MonoBehaviour
     
     private void InitProductAreaController(List<Model> models)
     {
-        _productAreaController.Init(_productWindowObj, _productAreaParent, _closeButton);
+        _productAreaController.Init();
         foreach (var model in models)
         {
             _productAreaController.AddModel(model);
@@ -48,10 +41,10 @@ public class EntryPoint : MonoBehaviour
 
     private void InitPurchaseController(List<Model> models)
     {
-        _productPurchaseController.Init(_purchaseButton);
+        _purchaseController.Init();
         foreach (var model in models)
         {
-            _productPurchaseController.AddModel(model);
+            _purchaseController.AddModel(model);
         }
     }
 }

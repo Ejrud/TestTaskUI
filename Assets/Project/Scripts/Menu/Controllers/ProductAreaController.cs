@@ -4,32 +4,39 @@ using UnityEngine.UI;
 
 public class ProductAreaController : Controller
 {
-    // ProductAreaController отвечает за отображение продукта по нажатию кнопок
+    [SerializeField] private Button _closeButton;
     [SerializeField] private ButtonView _buttonPrefab;
+    [SerializeField] private GameObject _productWindowObj;
+    [SerializeField] private Transform _productAreaParent;
     
-    private Button _closeButton;
-    private GameObject _productWindowObj;
-    private Transform _productAreaParent;
     private List<ButtonView> _buttons = new List<ButtonView>();
     
-    public void Init(GameObject productArea, Transform productAreaParent, Button closeButton)
+    public override void Init()
     {
-        _productAreaParent = productAreaParent;
-        _productWindowObj = productArea;
-        _closeButton = closeButton;
-        
-        _closeButton.onClick.AddListener(() => 
-            { _productWindowObj.SetActive(false); });
+        _closeButton.onClick.AddListener(() =>
+        {
+            _productWindowObj.SetActive(false);
+            CloseWindow();
+        });
     }
 
     public override void AddModel(Model model)
     {
+        base.AddModel(model);
+        
         ButtonView buttonView = GetButtonView();
         buttonView.button.onClick.AddListener(model.OpenWindow);
         buttonView.UpdateView(model);
+    }
+
+    public override void Dispose()
+    {
+        foreach (var model in _models)
+        {
+            _closeButton.onClick.RemoveListener(model.CloseWindow);
+        }
         
-        _closeButton.onClick.AddListener(model.CloseWindow);
-        _models.Add(model);
+        base.Dispose();
     }
 
     private ButtonView GetButtonView()
@@ -41,4 +48,16 @@ public class ProductAreaController : Controller
 
         return buttonView;
     }
+
+    private void CloseWindow()
+    {
+        _currentModel.CloseWindow();
+    }
+    
+    private void SelectModel(Model model)
+    {
+        _currentModel = model;
+    }
+    
+    
 }

@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 370314436}
   - component: {fileID: 370314437}
   m_Layer: 0
-  m_Name: ProductPurchaseController
+  m_Name: PurchaseController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -748,6 +748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16764fcb8d7b4e38bdd3da30092076a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _purchaseButton: {fileID: 991121486}
 --- !u!1 &393329956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,7 +1468,7 @@ GameObject:
   - component: {fileID: 678985675}
   - component: {fileID: 678985676}
   m_Layer: 0
-  m_Name: ProductAreaController
+  m_Name: AreaController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1499,7 +1500,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a1f5a199ad842549e8518085799a5c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _closeButton: {fileID: 651947611}
   _buttonPrefab: {fileID: 3690153806020680632, guid: 823fdd9e1f159b743af7bfa95a23ab46, type: 3}
+  _productWindowObj: {fileID: 1115118913}
+  _productAreaParent: {fileID: 2041997579}
 --- !u!1 &780848036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2951,11 +2955,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4008dd81894c5a945880e6611e69ab2c, type: 2}
   _productView: {fileID: 1979525062}
   _productDiscountView: {fileID: 805441272}
-  _productAreaParent: {fileID: 2041997579}
-  _productWindowObj: {fileID: 1115118913}
-  _purchaseButton: {fileID: 991121486}
-  _closeButton: {fileID: 651947611}
-  _productPurchaseController: {fileID: 370314437}
+  _purchaseController: {fileID: 370314437}
   _productAreaController: {fileID: 678985676}
 --- !u!4 &1222732466
 Transform:
