@@ -26,3 +26,27 @@ MonoBehaviour:
         Type: 0
         Name: Wood
         Description: Just a wood
+    - name: WoodStack
+      _count: 40
+      _item:
+        Type: 0
+        Name: Wood
+        Description: Just a wood
+    - name: WoodStack
+      _count: 40
+      _item:
+        Type: 0
+        Name: Wood
+        Description: Just a wood
+    - name: WoodStack
+      _count: 40
+      _item:
+        Type: 0
+        Name: Wood
+        Description: Just a wood
+    - name: WoodStack
+      _count: 40
+      _item:
+        Type: 0
+        Name: Wood
+        Description: Just a wood
