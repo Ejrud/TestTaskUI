@@ -1,11 +1,10 @@
 using System;
-using UnityEngine;
 using UnityEngine.UI;
 
 [Serializable]
 public class ProductModel : Model
 {
-    public ProductModel(View view, ModelData data) : base(data, view) { }
+    public ProductModel(View view, ProductData data) : base(data, view) { }
     public Button PurchaseButton => _purchaseButton;
     
     private Button _purchaseButton;

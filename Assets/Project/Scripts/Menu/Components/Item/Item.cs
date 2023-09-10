@@ -1,8 +1,9 @@
 ﻿using System;
 
 [Serializable]
-public class Item
+public struct Item
 {
-    public ItemType Type;
-    public string Description;
+    public ItemType type;
+    public string iconName;
+    public string description;
 }

@@ -1,36 +1,25 @@
 ﻿using System;
-using UnityEngine;
 
 [Serializable]
-public class ItemStack
+public struct ItemStack
 {
     public string name;
-    public int count => _count;
-    public Item item => _item;
-    
-    [SerializeField] private int _count;
-    [SerializeField] private Item _item;
+    public int count;
+    public Item item;
 
     public bool AddItem(Item item, int count = 1)
     {
-        if (_item == null)
-        {
-            _item = item;
-            _count = count;
-            return true;
-        }
-
-        if (_item.Type != item.Type)
+        if (this.item.type != item.type)
         {
             return false;
         }
 
-        _count += count;
+        this.count += count;
         return true;
     }
 
     public ItemType GetItemType()
     {
-        return item.Type;
+        return item.type;
     }
 }

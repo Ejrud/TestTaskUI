@@ -23,7 +23,7 @@ public class PurchaseController : Controller
         }
         
         // TODO Some action
-        Debug.Log($"You have purchased {_currentModel.Data.IconName}");
+        Debug.Log($"You have purchased {_currentModel.Data.iconName}");
     }
 
     public override void Dispose()

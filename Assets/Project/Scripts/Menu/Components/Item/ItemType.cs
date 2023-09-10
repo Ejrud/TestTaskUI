@@ -3,10 +3,11 @@
 [Serializable]
 public enum ItemType
 {
-    wood,
-    rock,
-    coal,
-    rope,
-    crap,
-    fiber,
+    Wood,
+    Rock,
+    Coal,
+    Rope,
+    Crap,
+    Fiber,
+    None,
 }

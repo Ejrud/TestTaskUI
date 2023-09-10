@@ -3,48 +3,39 @@ using UnityEngine;
 
 public class EntryPoint : MonoBehaviour
 {
-    [SerializeField] private List<PackConfig> _donateConfigs;
+    [Header("Configs")]
+    [SerializeField] private SpriteLibrary _spriteLibrary;
+    [SerializeField] private List<ProductConfig> _productConfigs;
     
-    [Header("UI")]
+    [Header("View")]
     [SerializeField] private ProductView _productView;
     [SerializeField] private ProductDiscountView _productDiscountView;
 
     [Header("Controllers")]
     [SerializeField] private PurchaseController _purchaseController;
     [SerializeField] private ProductAreaController _productAreaController;
+    [SerializeField] private ProductFormController _productFormController;
     
     private void Start()
     {
-        List<Model> productModels = new List<Model>();
-        
-        foreach (var config in _donateConfigs)
-        {
-            Model model = (config.Data.HasDiscount) ? 
-                new ProductModel(_productDiscountView, config.Data) : 
-                new ProductModel(_productView, config.Data);
-            
-            productModels.Add(model);
-        }
-
-        InitProductAreaController(productModels);
-        InitPurchaseController(productModels);
-    }
-    
-    private void InitProductAreaController(List<Model> models)
-    {
-        _productAreaController.Init();
-        foreach (var model in models)
-        {
-            _productAreaController.AddModel(model);
-        }
-    }
-
-    private void InitPurchaseController(List<Model> models)
-    {
+        _spriteLibrary.Init();
         _purchaseController.Init();
-        foreach (var model in models)
+        _productAreaController.Init();
+        _productFormController.Init();
+        
+        foreach (var product in _productConfigs)
         {
-            _purchaseController.AddModel(model);
+            CreateProductModel(product.Data);
         }
+    }
+
+    public void CreateProductModel(ProductData data)
+    {
+        Model model = (data.hasDiscount) ? 
+            new ProductModel(_productDiscountView, data) : 
+            new ProductModel(_productView, data);
+            
+        _productAreaController.AddModel(model);
+        _purchaseController.AddModel(model);
     }
 }

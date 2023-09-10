@@ -19,13 +19,11 @@ public class SpriteLibrary : ScriptableObject
 
     public Sprite GetSpriteByName(string spriteName)
     {
-        Sprite sprite = _defaultSprite;
-
-        if (_imageLibrary.TryGetValue(spriteName, out sprite))
+        if (_imageLibrary.TryGetValue(spriteName, out Sprite sprite))
         {
             return sprite;
         }
-
-        return sprite;
+        
+        return _defaultSprite;
     }
 }

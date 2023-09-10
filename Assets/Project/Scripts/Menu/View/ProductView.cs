@@ -4,6 +4,11 @@ using TMPro;
 
 public class ProductView : View
 {
+    // В идеале сделать Init метод и передавать туда _spriteLibrary и каждый view сделать в виде префаба,
+    // но заморачиваться над этим нет смысла, т.к. это тестовое
+    [SerializeField] protected SpriteLibrary _spriteLibrary;
+    
+    [Header("UI")]
     [SerializeField] protected Image _icon;
     [SerializeField] protected TMP_Text _header;
     [SerializeField] protected TMP_Text _description;
@@ -13,16 +18,19 @@ public class ProductView : View
     
     public override void UpdateView(Model model)
     {
-        _header.text = model.Data.Header;
-        _description.text = model.Data.Description;
-        _price.text = model.Data.Price.ToString();
-        _donateName.text = model.Data.IconName;
+        _spriteLibrary.Init();
+        _icon.sprite = _spriteLibrary.GetSpriteByName(model.Data.iconName);
+        _header.text = model.Data.header;
+        _description.text = model.Data.description;
+        _price.text = model.Data.price.ToString();
+        _donateName.text = model.Data.iconName;
         
         HideItems();
 
-        for (int i = 0; i < model.Data.Items.Count; i++)
+        for (int i = 0; i < model.Data.items.Count; i++)
         {
-            _itemFrames[i].UpdateView(model.Data.Items[i]);
+            Sprite itemSprite = _spriteLibrary.GetSpriteByName(model.Data.items[i].item.iconName);
+            _itemFrames[i].UpdateView(model.Data.items[i], itemSprite);
             _itemFrames[i].gameObject.SetActive(true);
         }
     }

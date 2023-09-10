@@ -11,7 +11,7 @@ public class ButtonView : View
     
     public override void UpdateView(Model model)
     {
-        _buttonName.text = model.Data.IconName;
+        _buttonName.text = model.Data.iconName;
     }
 
     public override void ClearView()

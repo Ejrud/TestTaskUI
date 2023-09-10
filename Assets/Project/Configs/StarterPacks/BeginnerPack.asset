@@ -13,40 +13,40 @@ MonoBehaviour:
   m_Name: BeginnerPack
   m_EditorClassIdentifier: 
   Data:
-    _iconName: Beginner pack
-    _hasDiscount: 1
-    _header: Beginer pack
-    _description: Beginer pack Beginer pack Beginer pack
-    _price: 2.99
-    _discountPercentage: 15
-    _items:
-    - name: WoodStack
-      _count: 40
-      _item:
-        Type: 0
-        Name: Wood
-        Description: Just a wood
-    - name: WoodStack
-      _count: 40
-      _item:
-        Type: 0
-        Name: Wood
-        Description: Just a wood
-    - name: WoodStack
-      _count: 40
-      _item:
-        Type: 0
-        Name: Wood
-        Description: Just a wood
-    - name: WoodStack
-      _count: 40
-      _item:
-        Type: 0
-        Name: Wood
-        Description: Just a wood
-    - name: WoodStack
-      _count: 40
-      _item:
-        Type: 0
-        Name: Wood
-        Description: Just a wood
+    iconName: beginnerPack
+    price: 2.99
+    header: Beginner pack
+    hasDiscount: 0
+    description: Just a beginner pack
+    discountPercentage: 0
+    items:
+    - name: woodStack
+      count: 40
+      item:
+        type: 0
+        iconName: wood
+        description: Just a wood
+    - name: woodStack
+      count: 40
+      item:
+        type: 0
+        iconName: wood
+        description: Just a wood
+    - name: woodStack
+      count: 40
+      item:
+        type: 0
+        iconName: wood
+        description: Just a wood
+    - name: woodStack
+      count: 40
+      item:
+        type: 0
+        iconName: wood
+        description: Just a wood
+    - name: woodStack
+      count: 40
+      item:
+        type: 0
+        iconName: wood
+        description: Just a wood

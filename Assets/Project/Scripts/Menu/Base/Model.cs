@@ -6,12 +6,12 @@ public abstract class Model
 {
     public Action<Model> OnSelected;
     public Action<Model> OnRejected;
-    public ModelData Data => _data;
-    
-    [SerializeField] protected ModelData _data;
+    public ProductData Data => _data;
+
+    [SerializeField] protected ProductData _data;
     protected View _view;
 
-    public Model(ModelData data, View view)
+    public Model(ProductData data, View view)
     {
         _data = data;
         _view = view;
