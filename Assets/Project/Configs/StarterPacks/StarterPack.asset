@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec84369777210f468f2696637814273, type: 3}
+  m_Name: StarterPack
+  m_EditorClassIdentifier: 
+  Data:
+    iconName: starterPack
+    price: 6
+    header: Builder's kit
+    hasDiscount: 0
+    description: Just a builder's kit
+    discountPercentage: 0
+    items:
+    - name: FiberStack
+      count: 20
+      item:
+        type: 5
+        iconName: fiber
+        description: 
+    - name: WoodStack
+      count: 40
+      item:
+        type: 0
+        iconName: wood
+        description: 
+    - name: RockStack
+      count: 20
+      item:
+        type: 1
+        iconName: rock
+        description: 
+    - name: CoalStack
+      count: 20
+      item:
+        type: 2
+        iconName: coal
+        description: 
+    - name: ScrapStack
+      count: 20
+      item:
+        type: 4
+        iconName: scrap
+        description: 
+    - name: Rope
+      count: 20
+      item:
+        type: 3
+        iconName: rope
+        description: 
