@@ -25,6 +25,8 @@ public class ItemInputFrame : MonoBehaviour
             optionData.text = itemType.ToString();
             _itemType.options.Add(optionData);
         }
+
+        _itemType.captionText.text = itemTypes[0].ToString();
     }
 
     public bool IsEmpty()

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     iconName: beginnerPack
-    price: 2.99
+    price: 3.33
     header: Beginner pack
-    hasDiscount: 0
+    hasDiscount: 1
     description: Just a beginner pack
-    discountPercentage: 0
+    discountPercentage: 10
     items:
     - name: woodStack
       count: 40

@@ -26,7 +26,7 @@ public class ProductView : View
         _donateName.text = model.Data.iconName;
         
         HideItems();
-
+        
         for (int i = 0; i < model.Data.items.Count; i++)
         {
             Sprite itemSprite = _spriteLibrary.GetSpriteByName(model.Data.items[i].item.iconName);

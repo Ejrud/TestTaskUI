@@ -13,9 +13,46 @@ MonoBehaviour:
   m_Name: StarterPack
   m_EditorClassIdentifier: 
   Data:
-    _iconName: Starter pack
-    _hasDiscount: 0
-    _header: Starter pack
-    _description: Just a starter pack for game
-    _price: 4.99
-    _discountPercentage: 0
+    iconName: starterPack
+    price: 6
+    header: Builder's kit
+    hasDiscount: 0
+    description: Just a builder's kit
+    discountPercentage: 0
+    items:
+    - name: FiberStack
+      count: 20
+      item:
+        type: 5
+        iconName: fiber
+        description: 
+    - name: WoodStack
+      count: 40
+      item:
+        type: 0
+        iconName: wood
+        description: 
+    - name: RockStack
+      count: 20
+      item:
+        type: 1
+        iconName: rock
+        description: 
+    - name: CoalStack
+      count: 20
+      item:
+        type: 2
+        iconName: coal
+        description: 
+    - name: ScrapStack
+      count: 20
+      item:
+        type: 4
+        iconName: scrap
+        description: 
+    - name: Rope
+      count: 20
+      item:
+        type: 3
+        iconName: rope
+        description: 

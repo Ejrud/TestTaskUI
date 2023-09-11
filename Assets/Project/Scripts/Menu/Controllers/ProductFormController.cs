@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public sealed class ProductFormController : Controller
 {
@@ -19,6 +18,7 @@ public sealed class ProductFormController : Controller
     [SerializeField] private Button _closeButton;
     [SerializeField] private Button _createButton;
     [SerializeField] private Button _clearFormButton;
+    [SerializeField] private Button _openProductCreator;
 
     [Header("ItemTypes")] 
     [SerializeField] private ItemType[] _itemTypes;
@@ -26,6 +26,7 @@ public sealed class ProductFormController : Controller
     [Space(10)]
     [SerializeField] private ProductInputView _productInputView;
 
+    [SerializeField] private EntryPoint _entryPoint;
     private Dictionary<string, ItemType> _typeMap;
     private string falseDiscount;
 
@@ -36,7 +37,8 @@ public sealed class ProductFormController : Controller
         falseDiscount = _discount.options[0].text;
         
         _closeButton.onClick.AddListener(() => { _formWindowObj.SetActive(false); });
-        _clearFormButton.onClick.AddListener(_productInputView.ClearItems);
+        _openProductCreator.onClick.AddListener(() => _formWindowObj.SetActive(true));
+        _clearFormButton.onClick.AddListener(ClearFields);
         _createButton.onClick.AddListener(PrepareProduct);
         _addButton.onClick.AddListener(AddItem);
     }
@@ -66,6 +68,7 @@ public sealed class ProductFormController : Controller
         if (_productInputView.IsEmptyFields())
             return;
         
+        Debug.Log("Preparing completed");
         CreateProduct();
     }
 
@@ -75,25 +78,39 @@ public sealed class ProductFormController : Controller
 
         ProductData productData = new ProductData();
         productData.iconName = _header.text;
-        productData.price = Convert.ToSingle(_price.text);
+        productData.price = float.Parse(_price.text);
         productData.header = _header.text;
         productData.hasDiscount = hasDiscount;
         productData.description = _description.text;
-        productData.discountPercentage = Convert.ToSingle(_percentage.text);
-
-        List<ItemStack> itemStacks = GetItems();
+        productData.discountPercentage = (string.IsNullOrWhiteSpace(_percentage.text)) ? 0 : float.Parse(_percentage.text);
+        productData.items = GetItems();
+        
+        _entryPoint.CreateProductModel(productData);
     }
 
-    
+    private void ClearFields()
+    {
+        _productInputView.ClearItems();
+        
+        _header.text = "";
+        _description.text = "";
+        _price.text = "";
+        _percentage.text = "";
+    }
+
+
     private List<ItemStack> GetItems()
     {
         List<ItemStack> itemStacks = new List<ItemStack>();
 
         foreach (var inputFrame in _productInputView.ItemInputFrames)
         {
+            if (!inputFrame.isCreated)
+                continue;
+            
             ItemStack itemStack = new ItemStack();
             itemStack.name = inputFrame.itemName + "Stack";
-            itemStack.count = Convert.ToInt32(inputFrame.value);
+            itemStack.count = int.Parse(inputFrame.value);
             itemStack.item.type = GetItemTypeByString(inputFrame.itemType);
             itemStack.item.description = "";
             itemStack.item.iconName = inputFrame.itemName;
