@@ -22,7 +22,7 @@ public class PurchaseController : Controller
             return;
         }
         
-        // TODO Some action
+        // TODO Вызов метода или события покупки
         Debug.Log($"You have purchased {_currentModel.Data.iconName}");
     }
 

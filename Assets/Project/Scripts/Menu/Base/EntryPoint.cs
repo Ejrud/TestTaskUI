@@ -37,7 +37,5 @@ public class EntryPoint : MonoBehaviour
             
         _productAreaController.AddModel(model);
         _purchaseController.AddModel(model);
-        
-        Debug.Log("Model created");
     }
 }

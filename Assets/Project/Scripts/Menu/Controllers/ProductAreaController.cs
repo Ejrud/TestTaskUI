@@ -29,6 +29,8 @@ public class ProductAreaController : Controller
         buttonView.UpdateView(model);
     }
 
+    // Вообще discpose в этом проекте не используется, но в случае необходимости удаления этого класса
+    // в первую очередь нужно будет вызвать этот метод
     public override void Dispose()
     {
         foreach (var model in _models)

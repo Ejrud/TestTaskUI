@@ -42,5 +42,11 @@ public class ItemInputFrame : MonoBehaviour
     {
         gameObject.SetActive(active);
         _isCreated = active;
+
+        if (!active)
+        {
+            _itemName.text = "";
+            _itemValue.text = "";
+        }
     }
 }

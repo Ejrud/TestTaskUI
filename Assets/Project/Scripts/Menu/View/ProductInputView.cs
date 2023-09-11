@@ -30,18 +30,21 @@ public sealed class ProductInputView : MonoBehaviour
         }
     }
 
-    public bool IsEmptyFields()
+    public bool IsItemsEmpty()
     {
+        bool isEmpty = true;
         foreach (var inputFrame in _itemInputFrames)
         {
             if (!inputFrame.isCreated)
                 continue;
+
+            isEmpty = false;
             
             if (inputFrame.IsEmpty())
                 return true;
         }
 
-        return false;
+        return isEmpty;
     }
 
     public bool IsExceededLimit()

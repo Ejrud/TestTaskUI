@@ -57,18 +57,29 @@ public sealed class ProductFormController : Controller
     private void PrepareProduct()
     {
         if (string.IsNullOrWhiteSpace(_header.text))
-            return; 
-        
+        {
+            LogMessage("Empty field \"Header\"");
+            return;
+        }
+
         if (string.IsNullOrWhiteSpace(_description.text))
-            return; 
+        {
+            LogMessage("Empty field \"Description\"");
+            return;
+        }
         
         if (string.IsNullOrWhiteSpace(_price.text))
+        {
+            LogMessage("Empty field \"Price\"");
             return;
+        }
         
-        if (_productInputView.IsEmptyFields())
+        if (_productInputView.IsItemsEmpty())
+        {
+            LogMessage("Empty field \"Items\"");
             return;
+        }
         
-        Debug.Log("Preparing completed");
         CreateProduct();
     }
 
@@ -86,6 +97,7 @@ public sealed class ProductFormController : Controller
         productData.items = GetItems();
         
         _entryPoint.CreateProductModel(productData);
+        ClearFields();
     }
 
     private void ClearFields()
@@ -144,5 +156,10 @@ public sealed class ProductFormController : Controller
         }
         
         return typeMap;
+    }
+
+    private void LogMessage(string msg)
+    {
+        Debug.LogWarning(msg);
     }
 }

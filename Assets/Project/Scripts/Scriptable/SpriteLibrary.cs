@@ -19,6 +19,9 @@ public class SpriteLibrary : ScriptableObject
 
     public Sprite GetSpriteByName(string spriteName)
     {
+        if (_imageLibrary == null)
+            Init();
+        
         if (_imageLibrary.TryGetValue(spriteName, out Sprite sprite))
         {
             return sprite;
